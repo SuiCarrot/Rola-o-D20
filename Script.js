@@ -40,14 +40,15 @@ function validacaoNumero(a) {
       a = prompt(``);
     }
   }
+  return a
 }
 const jogadores = []; //Definição ddos arrays de jogadores e array de nomes
 const nomes = [];
+let x=0
 while (true) {
   //Definição da quantidade de jogadores e dos nomes de cada um
   console.log(`Quantos jogadores irão jogar?`);
   let qtdadeJogadores = +prompt(``);
-  validacaoNumero(qtdadeJogadores);
   for (i = 0; i < qtdadeJogadores; i++) {
     let nome = prompt(`Digite o nome do jogador ${i + 1}: `);
     nomes.push(nome);
@@ -58,8 +59,12 @@ while (true) {
   let qtdadeRodadas = +prompt(``);
   validacaoNumero(qtdadeRodadas);
   for (i = 0; i < qtdadeRodadas; i++) {
+    x=0
     //Definição dos valores aleatórios para cada jogador e contador de vitórias para cada rodada do jogo
-    jogadores[i].dado = random(20, 1);
+    for (jogador of jogadores ){
+    jogadores[x].dado = random(20, 1);
+    x++
+    }
     jogadores.sort(compararDados); //Organizando array a partir dos valores sorteados (dados rolados)
     for (a in jogadores) {
       if (jogadores[a].dado == jogadores[jogadores.length - 1].dado) {
